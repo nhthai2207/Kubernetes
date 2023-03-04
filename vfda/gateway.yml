@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: vfda-gateway
+  namespace: default
+  labels:
+    app: vfda-be
+    service: vfda-be
+    deploy_by: thai
+    
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - vfd-adoption.api.eu02.stg.portal.restaurant

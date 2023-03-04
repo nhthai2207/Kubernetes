@@ -1,0 +1,70 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    artifact.spinnaker.io/location: default
+    artifact.spinnaker.io/name: vp-bff-proxy
+    artifact.spinnaker.io/type: kubernetes/VirtualService.networking.istio.io
+    artifact.spinnaker.io/version: ""
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.istio.io/v1beta1","kind":"VirtualService","metadata":{"annotations":{"artifact.spinnaker.io/location":"default","artifact.spinnaker.io/name":"vp-bff-proxy","artifact.spinnaker.io/type":"kubernetes/VirtualService.networking.istio.io","artifact.spinnaker.io/version":"","moniker.spinnaker.io/application":"vp-bff","moniker.spinnaker.io/cluster":"VirtualService.networking.istio.io vp-bff-proxy"},"labels":{"app.kubernetes.io/managed-by":"spinnaker","app.kubernetes.io/name":"vp-bff"},"name":"vp-bff-proxy","namespace":"default"},"spec":{"gateways":["vp-bff-proxy"],"hosts":["vp-bff.api.eu02.stg.portal.restaurant"],"http":[{"match":[{"uri":{"prefix":"/bff.v1.Profile/"}},{"uri":{"prefix":"/bff.v1.Vendors/"}}],"route":[{"destination":{"host":"vp-bff-proxy","port":{"number":9090},"subset":"v1"}}]},{"corsPolicy":{"allowHeaders":["*"],"allowMethods":["GET","POST","PATCH","OPTIONS","DELETE"],"allowOrigins":[{"exact":"*"}]},"match":[{"uri":{"prefix":"/radmin/v1/"}},{"uri":{"prefix":"/ump/v1/"}},{"uri":{"prefix":"/auth/"}},{"uri":{"prefix":"/pbl/"}},{"uri":{"prefix":"/profile/v1/"}},{"uri":{"prefix":"/pns/v1/"}},{"uri":{"prefix":"/vendors/v1/"}}],"route":[{"destination":{"host":"vp-bff-proxy","port":{"number":8080},"subset":"v1"}}]}]}}
+    moniker.spinnaker.io/application: vp-bff
+    moniker.spinnaker.io/cluster: VirtualService.networking.istio.io vp-bff-proxy
+  creationTimestamp: "2022-11-24T15:04:53Z"
+  generation: 3
+  labels:
+    app.kubernetes.io/managed-by: spinnaker
+    app.kubernetes.io/name: vp-bff
+  name: vp-bff-proxy
+  namespace: default
+  resourceVersion: "26634691"
+  uid: d579508b-994b-4b0f-90a0-8a4c23311447
+spec:
+  gateways:
+  - vp-bff-proxy
+  hosts:
+  - vp-bff.api.eu02.stg.portal.restaurant
+  http:
+  - match:
+    - uri:
+        prefix: /bff.v1.Profile/
+    - uri:
+        prefix: /bff.v1.Vendors/
+    route:
+    - destination:
+        host: vp-bff-proxy
+        port:
+          number: 9090
+        subset: v1
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - GET
+      - POST
+      - PATCH
+      - OPTIONS
+      - DELETE
+      allowOrigins:
+      - exact: '*'
+    match:
+    - uri:
+        prefix: /radmin/v1/
+    - uri:
+        prefix: /ump/v1/
+    - uri:
+        prefix: /auth/
+    - uri:
+        prefix: /pbl/
+    - uri:
+        prefix: /profile/v1/
+    - uri:
+        prefix: /pns/v1/
+    - uri:
+        prefix: /vendors/v1/
+    route:
+    - destination:
+        host: vp-bff-proxy
+        port:
+          number: 8080
+        subset: v1

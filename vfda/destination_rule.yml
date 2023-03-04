@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: vfda-dl
+  namespace: default
+spec:
+  host: vfda-be
+  subsets:
+    - name: v1
+      labels:
+        version: v1

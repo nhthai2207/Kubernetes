@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vfda-vservice
+spec:
+  hosts:
+  - vfd-adoption.api.eu02.stg.portal.restaurant
+  gateways:
+  - vfda-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /vendor-portal/v1
+      - uri:
+          prefix: /ops-portal/v1
+      - uri:
+          prefix: /health
+      - uri:
+          prefix: /index.html
+      route:
+      - destination:
+          host: vfda-be
+          port:
+            number: 80         
+
+
+           
+
+            ggSYf@6kQ27n
+            gpt: XfsCHR8tr8-*QC4

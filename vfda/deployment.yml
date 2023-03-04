@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vfda-be
+  labels:
+    app: vfda
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vfda-be
+  template:
+    metadata:
+      labels:
+        app: vfda-be      
+    spec:
+      serviceAccountName: vfda-be
+      containers:
+      - name: vfda-be
+        image: nginx:1.14.2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
