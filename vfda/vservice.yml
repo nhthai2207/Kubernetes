@@ -21,10 +21,4 @@ spec:
       - destination:
           host: vfda-be
           port:
-            number: 80         
-
-
-           
-
-            ggSYf@6kQ27n
-            gpt: XfsCHR8tr8-*QC4
+            number: 8005

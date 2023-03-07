@@ -17,10 +17,12 @@ spec:
       serviceAccountName: vfda-be
       containers:
       - name: vfda-be
-        image: nginx:1.14.2
+        # image: nginx:1.14.2
+        #image: 100566118830.dkr.ecr.eu-west-1.amazonaws.com/vfd-adoptions-stg-web-svc:thai_tt
+        image: 100566118830.dkr.ecr.eu-west-1.amazonaws.com/vfd-adoptions-stg-grpc:thai_tt
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: 8005 # notice that we cannot access this port from outside (via ip or address)
